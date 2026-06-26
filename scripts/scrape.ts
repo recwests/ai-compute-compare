@@ -15,7 +15,8 @@ const body = {
   type: 'ondemand',
   verified: { eq: true },
   rentable: { eq: true },
-  gpu_name: { in: ['RTX_4090', 'H100_SXM5', 'H100_PCIE', 'H100_NVL', 'H100_80GB'] },
+  // Vast's gpu_name values use spaces, not underscores (e.g. "RTX 4090", "H100 SXM").
+  gpu_name: { in: ['RTX 4090', 'H100 SXM', 'H100 NVL', 'H100 PCIE', 'H100 80GB'] },
 };
 const res = await fetch('https://console.vast.ai/api/v0/bundles/', {
   method: 'POST',
